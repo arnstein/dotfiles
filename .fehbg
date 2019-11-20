@@ -1,0 +1,2 @@
+#!/bin/sh
+'feh' '--bg-scale' '/home/arnstein/Pictures/bg.jpg' 

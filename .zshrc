@@ -28,3 +28,5 @@ exit
 /usr/bin/setxkbmap -option "grp:alt_shift_toggle"
 
 source .fehbg
+
+evan `dircolors /home/arnstein/.dir_colors/dircolors`
