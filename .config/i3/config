@@ -153,3 +153,5 @@ bindsym $mod+c exec /home/arnstein/i3lock-fancy-rapid/i3lock-fancy-rapid  3 5
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 exec polybar example
+
+exec_always --no-startup-id /home/arnstein/.config/autorandr/postswitch
