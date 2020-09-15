@@ -1,5 +1,8 @@
 " Arnsteins .vimrc file
 
+" Add this line to .bashrc to swap caps lock and escape:
+" /usr/bin/setxkbmap -option "caps:swapescape"
+
 set nocompatible
 filetype off
 
@@ -14,12 +17,11 @@ if !filereadable(vundle_readme)
 endif
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
-
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized' "Colorscheme
 Plugin 'https://github.com/tpope/vim-fugitive' "Git + Vim = true
 Plugin 'tpope/vim-sensible' "Sensible vim
-Plugin 'derekwyatt/vim-scala' "Scala syntax
+Plugin 'arnstein/yoctolog.vim' "Yocto log syntax
 Plugin 'vim-syntastic/syntastic' "Syntax checking
 Plugin 'rust-lang/rust.vim' "Syntax checking
 Plugin 'tpope/vim-surround' "Easy surrounding fixing
@@ -28,18 +30,17 @@ Plugin 'vhda/verilog_systemverilog.vim'
 " SnipMate and dependencies
 Plugin 'honza/vim-snippets'
 Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'neoclide/coc.nvim'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
-Plugin 'Valloric/YouCompleteMe' "YouCompleteMe autocomplete
+"Plugin 'Valloric/YouCompleteMe' "YouCompleteMe autocomplete
 Plugin 'vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-
 if installVundle == 0
     echo "Installing plugins, please ignore key map error messages"
     :PluginInstall
 endif
 call vundle#end()
-
 filetype plugin indent on
 set nocp
 
@@ -152,9 +153,11 @@ set clipboard=unnamedplus
 set guioptions+=a
 
 " Proper tab indent
-set tabstop=4
+set softtabstop=4
 set shiftwidth=4
 set expandtab
+set cindent
+
 
 if (&ft=='v' || &ft=='sv' || &ft=='scala')
     set tabstop=2
@@ -190,6 +193,8 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 match RedundantWhitespace /[^\t]\zs\t\+/
 match ExtraWhitespace /\s\+$\| \+\ze\t/
 
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " Ctrl+C to copy to system clipboard. Only works if you have gVim/vim compiled with clipboard
 vmap <C-c> "+y
 
