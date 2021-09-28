@@ -27,12 +27,12 @@ Plugin 'rust-lang/rust.vim' "Syntax checking
 Plugin 'tpope/vim-surround' "Easy surrounding fixing
 Plugin 'sjl/gundo.vim' "Visualization of Vim undo tree
 Plugin 'vhda/verilog_systemverilog.vim'
+Plugin 'iamcco/coc-flutter'
 " SnipMate and dependencies
 Plugin 'honza/vim-snippets'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'neoclide/coc.nvim'
 Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
 "Plugin 'Valloric/YouCompleteMe' "YouCompleteMe autocomplete
 Plugin 'vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -178,15 +178,17 @@ let g:syntastic_mode_map = { 'passive_filetypes': ['scala'] }
 syntax enable
 set term=screen-256color
 set t_Co=256
-set background=light
+set background=dark
 let g:solarized_termcolors=16
 colorscheme solarized
 
+let g:coc_disable_startup_warning = 1
 if (&ft=='py' || &ft=='pyc')
 " Atomatic removal of trailing whitespaces
     autocmd BufWritePre * :%s/\s\+$//e
 endif
 
+autocmd Filetype yaml setlocal expandtab tabstop=4 shiftwidth=2 softtabstop=2
 " Highlight redundant whitespaces
 highlight RedundantWhitespace ctermbg=red guibg=red
 highlight ExtraWhitespace ctermbg=red guibg=red
