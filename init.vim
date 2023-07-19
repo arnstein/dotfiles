@@ -29,8 +29,7 @@ if installPlug == 0
 endif
 call plug#end()
 
-lua require('lualine').setup()
-
+lua require('lualine').setup({options = {theme = 'solarized_dark'}})
 
 " Use <Tab> and <S-Tab> to navigate the completion list:
 inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
